@@ -4,29 +4,40 @@
 
 An AI voice tutor in your pocket. Two minutes a day, real conversations, gentle corrections.
 
-## What it does
+**Status:** v0 skeleton — landing page + voice-scenario route. Full AI not yet wired.
 
-- **Voice-first** — Actual conversations, not flashcards. Talk to an AI that listens and responds like a patient teacher.
-- **Instant feedback** — Catches pronunciation, grammar, and word choice. Shows you the right way, kindly.
-- **Your pace** — Two minutes on the bus or thirty before bed. Streaks keep you coming back.
+**Landing:** https://fluentpal.vercel.app
 
-## Why
+---
 
-Consumer AI. Part of a 20-product exploration of high-demand consumer and SMB markets.
+## Stack
 
-## Status
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 15 (App Router) |
+| Language | TypeScript (strict) |
+| Styling | Tailwind v4 |
+| Fonts | Inter via `next/font/google` |
+| Hosting | Vercel (zero config) |
+| Waitlist | https://waitlist-api-sigma.vercel.app |
 
-Landing page live. Product in planning.
+## Run locally
 
-- **Live**: https://mukundakatta.github.io/fluentpal/
+```bash
+pnpm install
+pnpm dev
+```
 
-## Stack (when built)
+Open http://localhost:3000.
 
-- Next.js 16 (App Router)
-- Supabase for auth + data
-- Stripe for payments
-- Deployed on Vercel
+## Deploy
 
-## Local preview
+Push to `main` — Vercel auto-deploys. No environment variables required.
 
-Just open `index.html` in a browser — it is a static landing page with the Tailwind CDN.
+## Routes
+
+| Route | Description |
+|---|---|
+| `/` | Landing page with waitlist form |
+| `/try` | Scenario picker + Web Speech API mic capture |
+| `/api/waitlist` | POST `{ email }` → forwards to waitlist-api-sigma |
