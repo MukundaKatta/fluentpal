@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    title: "FluentPal — Learn English by talking.",
+    description:
+      "An AI voice tutor in your pocket. Two minutes a day, real conversations, gentle corrections.",
     images: [
       "https://waitlist-api-sigma.vercel.app/api/og?title=FluentPal&accent=blue&category=Consumer%20AI",
     ],
