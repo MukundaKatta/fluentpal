@@ -2,42 +2,69 @@
 
 > Learn English by talking.
 
-An AI voice tutor in your pocket. Two minutes a day, real conversations, gentle corrections.
+An AI tutor in your pocket. Real conversations, gentle corrections. 5 free lessons per day.
 
-**Status:** v0 skeleton — landing page + voice-scenario route. Full AI not yet wired.
+**Live MVP:** https://fluentpal-two.vercel.app
 
-**Landing:** https://fluentpal.vercel.app
+## Features
 
----
+- Magic-link sign-in via Supabase (no password)
+- 6 lesson scenarios: Coffee shop, Job interview, Doctor's visit, Airport, Small talk, Phone call
+- Streaming AI chat via OpenAI `gpt-4o-mini`
+- Gentle corrections: AI shows mistake then correct version
+- Free tier: 5 lessons/day per user, tracked in Supabase
 
 ## Stack
 
-| Layer | Choice |
-|---|---|
-| Framework | Next.js 15 (App Router) |
-| Language | TypeScript (strict) |
-| Styling | Tailwind v4 |
-| Fonts | Inter via `next/font/google` |
-| Hosting | Vercel (zero config) |
-| Waitlist | https://waitlist-api-sigma.vercel.app |
+- Next.js 16 (App Router)
+- Tailwind CSS
+- Supabase (auth + usage tracking)
+- OpenAI API (gpt-4o-mini, streaming)
+- Vercel (deployment)
 
-## Run locally
+## Setup
+
+### 1. Clone and install
 
 ```bash
-pnpm install
-pnpm dev
+git clone https://github.com/MukundaKatta/fluentpal.git
+cd fluentpal
+npm install
 ```
 
-Open http://localhost:3000.
+### 2. Environment variables
 
-## Deploy
+```bash
+cp .env.local.example .env.local
+```
 
-Push to `main` — Vercel auto-deploys. No environment variables required.
+Edit `.env.local` with your keys:
 
-## Routes
-
-| Route | Description |
+| Variable | Where to find it |
 |---|---|
-| `/` | Landing page with waitlist form |
-| `/try` | Scenario picker + Web Speech API mic capture |
-| `/api/waitlist` | POST `{ email }` → forwards to waitlist-api-sigma |
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project → Settings → API |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase project → Settings → API |
+| `OPENAI_API_KEY` | platform.openai.com → API Keys |
+
+### 3. Supabase setup
+
+In your Supabase project:
+
+1. **Auth → Email** — enable "Email OTP" / magic links, set Site URL to your Vercel domain
+2. **SQL Editor** — run the migration in `supabase/migrations/001_usage_table.sql`
+
+### 4. Run locally
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+### 5. Deploy to Vercel
+
+```bash
+vercel --prod
+```
+
+Add `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, and `OPENAI_API_KEY` in the Vercel project settings, then redeploy.
