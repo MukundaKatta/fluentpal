@@ -49,7 +49,7 @@ export default function LoginPage() {
           <div className="rounded-2xl border border-neutral-200 bg-white p-8 shadow-sm">
             <h1 className="text-2xl font-bold tracking-tight">Sign in</h1>
             <p className="mt-1 text-sm text-neutral-500">
-              No password needed — we'll email you a link.
+              No password needed — we&apos;ll email you a link.
             </p>
 
             <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">

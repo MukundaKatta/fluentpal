@@ -68,7 +68,7 @@ export default async function LessonsPage() {
 
         {remaining === 0 && (
           <div className="mb-8 rounded-2xl border border-red-200 bg-red-50 px-6 py-4 text-sm text-red-700">
-            You've used all 5 free lessons for today. Come back tomorrow!
+            You&apos;ve used all 5 free lessons for today. Come back tomorrow!
           </div>
         )}
 
